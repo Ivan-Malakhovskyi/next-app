@@ -3,6 +3,7 @@
 import { Formik } from "formik";
 import Uploader from "./image-uploader";
 import Input from "./input";
+import Button from "./button";
 
 export type CompanyFieldsValues = {
   name: string;
@@ -49,6 +50,7 @@ const Form = ({ onSubmit }: CompanyFormProps) => {
             />
           </div>
         </div>
+        <Button type="submit">Add company</Button>
       </form>
     </Formik>
   );

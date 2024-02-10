@@ -1,10 +1,17 @@
-const serverComponent = ({ children }) => {
+import React from "react";
+
+export interface ServerProps {
+  children?: React.ReactNode;
+}
+
+const ServerComponent = ({ children }: ServerProps) => {
+  console.log("ServerComponent");
   return (
     <div>
-      <span>server component</span>
+      <span>ServerComponent</span>
       {children}
     </div>
   );
 };
 
-export default serverComponent;
+export default ServerComponent;

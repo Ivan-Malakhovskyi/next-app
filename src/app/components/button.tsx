@@ -11,7 +11,7 @@ const Button = ({ disabled, ...rest }: ButtonProps) => {
   return (
     <button
       {...rest}
-      className="mx-auto w-full py-[10px] px-[20px] rounded-[4px] text-[#fafafa] text-[16px] text-center bg-[#111827] max-w-[157px]"
+      className="py-[10px] px-[20px] rounded-[4px] text-[#fafafa] text-[16px] text-center bg-[#111827] "
     />
   );
 };
