@@ -1,10 +1,11 @@
 import React from "react";
-import Heading from "./Heading";
+import NavigationMenu from "./NavigationMenu";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <header>
-      <Heading tag="h3" text="header page" />
+    <header className="sticky top-0 left-0 w-full z-1000 p-[8px] bg-gray-900">
+      <NavigationMenu />
     </header>
   );
 };

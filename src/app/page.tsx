@@ -1,15 +1,13 @@
-import Layout from "./(base)/layout";
-import Heading from "./components/Heading";
 // import  from "./(base)/layout";
 
-const Home = ({ children }) => {
+import Heading from "./components/Heading";
+
+const Home = () => {
   return (
-    <Layout>
-      <h1 className="p-5 text-center font-bold text-3xl">Home page</h1>
-    </Layout>
+    <main>
+      <Heading className="p-5 font-bold text-3xl" text="Home page " tag="h1" />
+    </main>
   );
 };
 
 export default Home;
-
-// <Heading className="p-5 font-bold text-3xl" text="Home" />
