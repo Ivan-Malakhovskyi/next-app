@@ -1,8 +1,11 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
 
-const mainFont = Plus_Jakarta_Sans({ subsets: ["latin"] });
+const mainFont = Roboto({
+  weight: ["400", "500", "700", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Home",
