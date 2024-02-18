@@ -123,14 +123,14 @@ const SignupPage: React.FC = (props: SignupPageProps) => {
                   >
                     {showPassword ? (
                       <Image
-                        src="/icons/eye-on.svg"
+                        src="./icons/eye-on.svg"
                         width={20}
                         height={20}
                         alt="eye-on-icon"
                       />
                     ) : (
                       <Image
-                        src="/icons/eye-off.svg"
+                        src="./icons/eye-off.svg"
                         width={20}
                         height={20}
                         alt="eye-off-icon"

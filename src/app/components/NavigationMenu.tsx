@@ -19,7 +19,7 @@ const NavigationMenu = () => {
       <ul className="flex justify-between items-center color color-gray-600">
         <Link className="text-gray-100 " href="/">
           <Image
-            src="/icons/ukraine.svg"
+            src="./icons/ukraine.svg"
             alt="ukraine_logo"
             width={40}
             height={40}
