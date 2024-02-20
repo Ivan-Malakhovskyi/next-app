@@ -4,15 +4,26 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const navigation = [
   { id: 1, title: "Home", path: "/" },
   { id: 2, title: "Companies", path: "/companies" },
   { id: 3, title: "Contacts", path: "/contacts" },
 ];
-
+{
+  /* <Button onClick={() => signOut()}>Signout</Button> */
+}
 const NavigationMenu = () => {
   const pathname = usePathname();
+  const session = useSession();
+
+  // {
+  // required: true,
+  // onUnauthenticated() {
+  //   redirect("/signin");
+  // },
+  // }
 
   return (
     <nav>
@@ -43,6 +54,10 @@ const NavigationMenu = () => {
             </li>
           );
         })}
+        <div className="text-white">
+          <span className="text-blue-400">Welcome </span>{" "}
+          <span className="underline"> {session?.data?.user?.email}</span>
+        </div>
       </ul>
     </nav>
   );
