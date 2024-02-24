@@ -4,7 +4,7 @@ import SigninPage from "../../components/SigninPage";
 const Signin = () => {
   return (
     <>
-      <SigninPage />
+      <SigninPage email={""} password={""} />
     </>
   );
 };

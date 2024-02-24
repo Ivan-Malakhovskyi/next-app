@@ -1,5 +1,3 @@
-"use client";
-
 import Heading from "./components/Heading";
 import Link from "next/link";
 
@@ -26,5 +24,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// Home.requireAuth = true;

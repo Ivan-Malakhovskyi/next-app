@@ -1,10 +1,9 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../src/app/firebase";
+import { auth } from "../../../firebase";
 
-const { NEXTAUTH_SECRET_KEY, NEXTAUTH_URL } = process.env;
-
+// //! Authorisaton with Email Firebase
 export const authOptions = {
   // Configure one or more authentication providers
   pages: {

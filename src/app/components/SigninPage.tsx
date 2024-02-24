@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState, FC } from "react";
 import Heading from "./Heading";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,7 +24,7 @@ const initialValuesFields = {
 const validationSigninSchema = yup.object({
   email: yup
     .string()
-    .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/)
+    .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/, "Inavlid email")
     .required(),
   password: yup
     .string()
@@ -34,7 +34,7 @@ const validationSigninSchema = yup.object({
     .required(),
 });
 
-const SigninPage: React.FC = () => {
+const SigninPage: FC<SigninPageProps> = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
@@ -50,7 +50,7 @@ const SigninPage: React.FC = () => {
       email,
       password,
       redirect: true,
-      callbackUrl: "/companies",
+      callbackUrl: "/posts",
     });
 
     resetForm();
@@ -84,6 +84,7 @@ const SigninPage: React.FC = () => {
                     name="email"
                     placeholder="email"
                     className="mt-1 p-2 w-full border rounded focus:outline-none focus:border-blue-500"
+                    requried
                   />
 
                   <ErrorMessage

@@ -8,22 +8,13 @@ import { useSession } from "next-auth/react";
 
 const navigation = [
   { id: 1, title: "Home", path: "/" },
-  { id: 2, title: "Companies", path: "/companies" },
+  { id: 2, title: "Posts", path: "/posts" },
   { id: 3, title: "Contacts", path: "/contacts" },
 ];
-{
-  /* <Button onClick={() => signOut()}>Signout</Button> */
-}
+
 const NavigationMenu = () => {
   const pathname = usePathname();
   const session = useSession();
-
-  // {
-  // required: true,
-  // onUnauthenticated() {
-  //   redirect("/signin");
-  // },
-  // }
 
   return (
     <nav>
