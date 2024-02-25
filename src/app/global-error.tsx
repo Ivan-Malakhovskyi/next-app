@@ -1,11 +1,13 @@
 "use client";
 
+import { FC } from "react";
+
 export interface GlobalErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
 }
 
-const GlobalError = ({ error, reset }: GlobalErrorProps) => {
+const GlobalError: FC<GlobalErrorProps> = ({ error, reset }) => {
   return (
     <html>
       <body>

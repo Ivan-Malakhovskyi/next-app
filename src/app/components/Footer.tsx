@@ -1,10 +1,10 @@
-import React from "react";
-import Heading from "./Heading";
+import React, { FC } from "react";
+import SocialLinks from "./SocialLinks";
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-100 p-[10px] mt-[60px]">
-      <Heading tag="h3" text="footer" />
+    <footer className="bg-gray-900 text-gray-100 p-[40px] mt-[60px] text-center">
+      <SocialLinks />
     </footer>
   );
 };

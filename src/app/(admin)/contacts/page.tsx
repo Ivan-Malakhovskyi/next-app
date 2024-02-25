@@ -4,8 +4,9 @@ import Heading from "../../components/Heading";
 import Head from "next/head";
 import Link from "next/link";
 import { getAllContacts } from "../../api/service";
+import { FC } from "react";
 
-const Contacts = async () => {
+const Contacts: FC = async () => {
   const contacts = await getAllContacts();
 
   return (

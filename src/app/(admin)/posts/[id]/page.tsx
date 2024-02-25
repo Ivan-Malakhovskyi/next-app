@@ -1,12 +1,18 @@
 import Head from "next/head";
 import PostInfo from "../../../components/PostInfo";
 import { getPostById } from "../../../api/service";
+import { FC } from "react";
+import { postType } from "../../../../types";
 
 export async function generateStaticParams() {
   return [{ id: "1" }, { id: "2" }];
 }
 
-const Posts = async ({ params }) => {
+interface postTypeProps {
+  params: postType;
+}
+
+const Post: FC<postTypeProps> = async ({ params }) => {
   const post = await getPostById(params);
 
   return (
@@ -19,4 +25,4 @@ const Posts = async ({ params }) => {
   );
 };
 
-export default Posts;
+export default Post;

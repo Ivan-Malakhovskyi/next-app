@@ -10,11 +10,7 @@ import * as yup from "yup";
 import { useRouter } from "next/navigation";
 import Button from "./button";
 import { signIn } from "next-auth/react";
-
-export interface SigninPageProps {
-  email: string;
-  password: string;
-}
+import { signinPageProps } from "../../types";
 
 const initialValuesFields = {
   email: "",
@@ -34,7 +30,7 @@ const validationSigninSchema = yup.object({
     .required(),
 });
 
-const SigninPage: FC<SigninPageProps> = () => {
+const SigninPage: FC<signinPageProps> = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();

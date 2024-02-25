@@ -1,4 +1,6 @@
-const Posts = () => {
+import { FC } from "react";
+
+const Posts: FC = () => {
   return (
     <>
       <h1>Posts page</h1>

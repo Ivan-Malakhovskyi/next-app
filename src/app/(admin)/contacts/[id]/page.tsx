@@ -1,13 +1,18 @@
-import React from "react";
+import React, { FC } from "react";
 import Heading from "../../../components/Heading";
 import ContactInfo from "../../../components/ContactInfo";
 import { getContactById } from "../../../api/service";
+import { contactType } from "../../../../types";
 
 export const generateStaticParams = () => {
   return [{ id: "1" }, { id: "2" }];
 };
 
-const Contact = async ({ params }) => {
+interface contactTypeProps {
+  params: contactType;
+}
+
+const Contact: FC<contactTypeProps> = async ({ params }) => {
   const contact = await getContactById(params);
 
   return (

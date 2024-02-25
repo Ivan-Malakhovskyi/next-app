@@ -2,6 +2,8 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
 import SessionProvider from "./SessionProvider";
+import { FC } from "react";
+import { childrenType } from "../types";
 
 const mainFont = Roboto({
   weight: ["400", "500", "700", "900"],
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
   description: "Home page",
 };
 
-const RootLayout = ({ children }) => {
+const RootLayout: FC<childrenType> = ({ children }) => {
   return (
     <html lang="en">
       <body className={mainFont.className}>

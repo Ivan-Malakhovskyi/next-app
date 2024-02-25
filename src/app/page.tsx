@@ -1,7 +1,9 @@
+import { FC } from "react";
+import { AppProps } from "next/app";
 import Heading from "./components/Heading";
 import Link from "next/link";
 
-const Home = () => {
+const Home: FC = (props: AppProps) => {
   return (
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
       <section>
@@ -13,7 +15,7 @@ const Home = () => {
         />
         <p className="text-lg mb-8">Explore and discover amazing content. </p>
         <Link
-          href="/signup"
+          href="/posts"
           className="bg-white text-indigo-600 py-2 px-4 rounded-full hover:bg-indigo-600 hover:text-white transition duration-300"
         >
           Get started

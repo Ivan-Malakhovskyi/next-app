@@ -3,23 +3,13 @@
 import { FC } from "react";
 import Heading from "./Heading";
 import Link from "next/link";
+import { contactType } from "../../types";
 
-interface AdressInterface {
-  street?: string;
-  city?: string;
-  zipcode?: string;
-  phone?: string;
+interface ContactInfoProps {
+  contact: contactType;
 }
 
-interface UserInfo {
-  contact: {
-    name: string;
-    email: string;
-    address: AdressInterface;
-  };
-}
-
-const ContactInfo: FC<UserInfo> = ({ contact }) => {
+const ContactInfo: FC<ContactInfoProps> = ({ contact }) => {
   const { name, email, address } = contact || {};
   const { street, city, zipcode, phone } = address || {};
 

@@ -1,21 +1,15 @@
 "use client";
 
 import { useState, FC } from "react";
-import Heading from "./Heading";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
-import Button from "./button";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
-export interface SignupPageProps {
-  name: string;
-  email: string;
-  password: string;
-}
+import Heading from "./Heading";
+import Image from "next/image";
+import Button from "./button";
 
 const initialValuesFields = {
   name: "",
@@ -40,7 +34,7 @@ const validationSignupSchema = yup.object({
     .required(),
 });
 
-const SignupPage: FC = (props: SignupPageProps) => {
+const SignupPage: FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();

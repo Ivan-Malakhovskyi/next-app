@@ -1,16 +1,12 @@
 "use client";
 
-import React from "react";
-import Heading from "./Heading";
-
+import { FC } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../firebase";
 
-const initialValuesFields = {
-  email: "",
-};
+import Heading from "./Heading";
 
 const validationSignupSchema = yup.object({
   email: yup
@@ -19,7 +15,7 @@ const validationSignupSchema = yup.object({
     .required(),
 });
 
-const ForgotPasswordPage: React.FC = () => {
+const ForgotPasswordPage: FC = () => {
   const handleResetEmail = (values, { resetForm }) => {
     const { email } = values;
 
@@ -33,7 +29,7 @@ const ForgotPasswordPage: React.FC = () => {
       {" "}
       <div className="h-full bg-white dark:bg-neutral-700 w-full rounded-[30px] flex justify-center  lg:w-6/12 ml-[15px]">
         <Formik
-          initialValues={initialValuesFields}
+          initialValues={{ name: "" }}
           onSubmit={handleResetEmail}
           validationSchema={validationSignupSchema}
         >

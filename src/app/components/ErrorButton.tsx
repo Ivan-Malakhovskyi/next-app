@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Button from "./button";
 
-type ErrorButtonProps = {};
-
-const ErrorButton = (props: ErrorButtonProps) => {
+const ErrorButton: FC = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {

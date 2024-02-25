@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import React from "react";
+import React, { FC } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 
@@ -12,7 +12,7 @@ const navigation = [
   { id: 3, title: "Contacts", path: "/contacts" },
 ];
 
-const NavigationMenu = () => {
+const NavigationMenu: FC = () => {
   const pathname = usePathname();
   const session = useSession();
 

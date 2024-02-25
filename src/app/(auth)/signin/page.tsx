@@ -1,12 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import SigninPage from "../../components/SigninPage";
 
-const Signin = () => {
-  return (
-    <>
-      <SigninPage email={""} password={""} />
-    </>
-  );
+const Signin: FC = () => {
+  return <SigninPage email={""} password={""} />;
 };
 
 export default Signin;

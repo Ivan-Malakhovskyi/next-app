@@ -4,8 +4,9 @@ import Heading from "../../components/Heading";
 import Head from "next/head";
 import { getAllPosts } from "../../api/service";
 import Link from "next/link";
+import { FC } from "react";
 
-const Posts = async () => {
+const Posts: FC = async () => {
   const posts = await getAllPosts();
 
   return (
@@ -15,7 +16,7 @@ const Posts = async () => {
       </Head>
       <Heading className="py-5 font-bold text-3xl" text="Posts" />
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-8 ">
         <ul>
           {posts.length > 0 ? (
             posts.map(({ id, title, body }) => (

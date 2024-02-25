@@ -1,13 +1,13 @@
 "use client";
 
 import Button from "../../components/button";
-
+import { FC } from "react";
 export interface ErrComponentProps {
   error: Error;
   reset: () => void;
 }
 
-const ErrComponent = ({ error, reset }: ErrComponentProps) => {
+const ErrComponent: FC<ErrComponentProps> = ({ error, reset }) => {
   return (
     <div>
       Something went wrong, try reload page {error.message}
