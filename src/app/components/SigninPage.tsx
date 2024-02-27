@@ -11,6 +11,18 @@ import { useRouter } from "next/navigation";
 import Button from "./button";
 import { signIn } from "next-auth/react";
 import { signinPageProps } from "../../types";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+
+import { auth } from "../firebase";
+
+export const saveToLocalStorage = (user) => {
+  localStorage.setItem("user", JSON.stringify(user));
+};
 
 const initialValuesFields = {
   email: "",
@@ -31,23 +43,35 @@ const validationSigninSchema = yup.object({
 });
 
 const SigninPage: FC<signinPageProps> = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
   const router = useRouter();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleToggleClick = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSignin = (values, { resetForm }) => {
+  const handleSignin = async (values, { resetForm }) => {
     const { email, password } = values;
 
-    signIn("credentials", {
-      email,
-      password,
-      redirect: true,
-      callbackUrl: "/posts",
-    });
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const firebaseUser = userCredential.user;
+      saveToLocalStorage(firebaseUser);
+
+      const currentUser = auth.currentUser;
+
+      if (currentUser) {
+        console.log("User logged in:", currentUser);
+        router.push("/contacts");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
 
     resetForm();
   };
@@ -55,7 +79,7 @@ const SigninPage: FC<signinPageProps> = () => {
   return (
     <section className="p-[20px] flex  ">
       {" "}
-      <div className="h-full bg-white dark:bg-neutral-700 w-full rounded-[30px] flex justify-center  lg:w-6/12 ">
+      <div className="h-full min-w-[270px] bg-white dark:bg-neutral-700 w-full rounded-[30px] flex justify-center  lg:w-6/12 ">
         <Formik
           initialValues={initialValuesFields}
           onSubmit={handleSignin}
@@ -145,6 +169,7 @@ const SigninPage: FC<signinPageProps> = () => {
                   {" "}
                   Signup
                 </Button>
+                or{" "}
               </p>
 
               <div>

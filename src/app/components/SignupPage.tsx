@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
-import { auth } from "../firebase";
 
 import Heading from "./Heading";
 import Image from "next/image";
 import Button from "./button";
+import { auth } from "../firebase";
+import { saveToLocalStorage } from "./SigninPage";
 
 const initialValuesFields = {
   name: "",
@@ -39,10 +40,26 @@ const SignupPage: FC = () => {
 
   const router = useRouter();
 
-  const handleSignup = (values, { resetForm }) => {
+  const handleSignup = async (values, { resetForm }) => {
     const { email, password } = values;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const firebaseUser = userCredential.user;
+      saveToLocalStorage(firebaseUser);
 
-    createUserWithEmailAndPassword(auth, email, password);
+      console.log(firebaseUser);
+      const currentUser = auth.currentUser;
+
+      if (currentUser) {
+        router.push("/posts");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
 
     resetForm();
   };
@@ -54,7 +71,7 @@ const SignupPage: FC = () => {
   return (
     <section className="py-[20px] flex">
       {" "}
-      <div className="h-full bg-white dark:bg-neutral-700 w-full rounded-[30px] flex justify-center  lg:w-6/12 ml-[15px]">
+      <div className="h-full min-w-[270px] bg-white dark:bg-neutral-700 w-full rounded-[30px] flex justify-center  lg:w-6/12 ml-[15px]">
         <Formik
           initialValues={initialValuesFields}
           onSubmit={handleSignup}

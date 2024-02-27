@@ -1,10 +1,9 @@
 // import NextAuth from "next-auth/next";
 // import CredentialsProvider from "next-auth/providers/credentials";
 // import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../../../firebase";
 
-// // //! Authorisaton with Email Firebase
-// export const authOptions = {
+// // //! Authorization with Email Firebase
+// const authOptions = {
 //   // Configure one or more authentication providers
 //   pages: {
 //     signIn: "/signin",
@@ -13,26 +12,35 @@
 //   providers: [
 //     CredentialsProvider({
 //       name: "Credentials",
-//       credentials: {
-//         username: {
-//           label: "Username: ",
-//           type: "text",
-//           placeholder: "Some User 🤣",
-//         },
-//       },
+//       credentials: {},
 //       async authorize(credentials): Promise<any> {
-//         return await signInWithEmailAndPassword(
-//           auth,
-//           (credentials as any).email || "",
-//           (credentials as any).password || ""
-//         )
-//           .then((userCredencials) => {
-//             if (userCredencials.user) {
-//               return userCredencials.user;
-//             }
+//         try {
+//           const userCredentials = await signInWithEmailAndPassword(
+//             auth,
+//             (credentials as any).email || "",
+//             (credentials as any).password || ""
+//           );
+//           if (userCredentials.user) {
+//             return userCredentials.user;
+//           } else {
 //             return null;
-//           })
-//           .catch((err) => console.log(err.message));
+//           }
+//         } catch (error) {
+//           console.log(error.massage);
+//           return null;
+//         }
+//       return await signInWithEmailAndPassword(
+//         auth,
+//         (credentials as any).email || "",
+//         (credentials as any).password || ""
+//       )
+//         .then((userCredentials) => {
+//           if (userCredentials.user) {
+//             return userCredentials.user;
+//           }
+//           return null;
+//         })
+//         .catch((err) => console.log(err.message));
 //       },
 //     }),
 //   ],

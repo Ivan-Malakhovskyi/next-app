@@ -27,7 +27,7 @@ const ForgotPasswordPage: FC = () => {
   return (
     <section className="p-[20px] flex  ">
       {" "}
-      <div className="h-full bg-white dark:bg-neutral-700 w-full rounded-[30px] flex justify-center  lg:w-6/12 ml-[15px]">
+      <div className="h-full min-w-[270px] bg-white dark:bg-neutral-700 w-full rounded-[30px] flex justify-center  lg:w-6/12 ml-[15px]">
         <Formik
           initialValues={{ name: "" }}
           onSubmit={handleResetEmail}

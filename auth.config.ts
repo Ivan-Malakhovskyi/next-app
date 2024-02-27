@@ -7,7 +7,8 @@ export const authConfig = {
 
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
+      //* !! - transform to boolean
+      const isLoggedIn = !!auth?.user; //if true -> user or false -> undefined
       const isOnPosts = nextUrl.pathname.startsWith("/posts");
 
       if (isOnPosts) {

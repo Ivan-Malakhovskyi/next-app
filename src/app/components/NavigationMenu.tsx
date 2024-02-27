@@ -1,10 +1,9 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import React, { FC } from "react";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
 
 const navigation = [
   { id: 1, title: "Home", path: "/" },
@@ -14,11 +13,16 @@ const navigation = [
 
 const NavigationMenu: FC = () => {
   const pathname = usePathname();
-  const session = useSession();
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    localStorage.removeItem("user");
+    router.push("/");
+  };
 
   return (
     <nav>
-      <ul className="flex justify-between items-center color color-gray-600">
+      <ul className="flex justify-between items-center color color-gray-600 ">
         <Link className="text-gray-100 " href="/">
           <Image
             src="/icons/ukraine.svg"
@@ -46,8 +50,15 @@ const NavigationMenu: FC = () => {
           );
         })}
         <div className="text-white">
-          <span className="text-blue-400">Welcome </span>{" "}
-          <span className="underline"> {session?.data?.user?.email}</span>
+          <div>
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-solid border-gray-300 rounded"
+            >
+              SignOut
+            </button>
+          </div>
         </div>
       </ul>
     </nav>

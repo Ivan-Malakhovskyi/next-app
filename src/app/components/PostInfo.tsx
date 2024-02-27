@@ -3,11 +3,11 @@ import { postType } from "../../types";
 
 import Heading from "./Heading";
 import Head from "next/head";
-interface posstInfoProps {
+interface postInfoProps {
   post: postType;
 }
 
-const PostInfo: FC<posstInfoProps> = ({ post }) => {
+const PostInfo: FC<postInfoProps> = ({ post }) => {
   const { title, body } = post || {};
 
   if (!post) {
