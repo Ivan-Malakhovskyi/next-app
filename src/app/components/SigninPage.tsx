@@ -9,16 +9,12 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import { useRouter } from "next/navigation";
 import Button from "./button";
-import { signIn } from "next-auth/react";
 import { signinPageProps } from "../../types";
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+import { AuthError, signInWithEmailAndPassword } from "firebase/auth";
 
 import { auth } from "../firebase";
+import { toast } from "react-toastify";
+import Toast from "./Toast";
 
 export const saveToLocalStorage = (user) => {
   localStorage.setItem("user", JSON.stringify(user));
@@ -64,12 +60,17 @@ const SigninPage: FC<signinPageProps> = () => {
       saveToLocalStorage(firebaseUser);
 
       const currentUser = auth.currentUser;
-
+      console.log(currentUser);
       if (currentUser) {
         console.log("User logged in:", currentUser);
         router.push("/contacts");
       }
     } catch (error) {
+      const badReq = (error as AuthError).code;
+
+      if (badReq === "auth/invalid-credential") {
+        toast.error("Email or password is wrong");
+      }
       console.log(error.message);
     }
 
@@ -191,6 +192,7 @@ const SigninPage: FC<signinPageProps> = () => {
             "url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg')",
         }}
       ></div>
+      <Toast />
     </section>
   );
 };

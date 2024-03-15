@@ -1,7 +1,7 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
-import SessionProvider from "./SessionProvider";
+
 import { FC } from "react";
 import { childrenType } from "../types";
 
@@ -18,9 +18,7 @@ export const metadata: Metadata = {
 const RootLayout: FC<childrenType> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={mainFont.className}>
-        <SessionProvider>{children}</SessionProvider>
-      </body>
+      <body className={mainFont.className}>{children}</body>
     </html>
   );
 };
